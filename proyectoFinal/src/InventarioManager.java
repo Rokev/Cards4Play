@@ -1,34 +1,59 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class InventarioManager {
-    public List<Producto> productos;
 
-    public InventarioManager(){
-        productos=new ArrayList<>();
+    private ArrayList<Producto> productos;
+
+    public InventarioManager() {
+
+        productos = new ArrayList<>();
     }
 
-    public void agregarCarta(Carta carta){
-        System.out.println("La carta se agrego con exito");
+    public void agregarCarta(Carta carta) {
+        productos.add(carta);
     }
 
-    public void agregarBooster(Booster booster){
-        System.out.println("El booster se agrego con exito");
+    public void agregarBooster(Booster booster) {
+        productos.add(booster);
     }
 
-    public void agregarSellado(ProductoSellado sellado){
-        productos.add(sellado);
+    public void agregarProductoSellado(ProductoSellado ps) {
+        productos.add(ps);
     }
 
-    public void agregarAccesorio(Accesorio accesorio){
-        productos.add(accesorio);
+    public void agregarAccesorio(Accesorio acc) {
+        productos.add(acc);
     }
-    public Producto buscarProducto(String id){
-        for(Producto p :productos){
-            if (p.id.equals(id)){
+
+    public void eliminarCarta(Carta carta) {
+        productos.remove(carta);
+    }
+
+    public void eliminarBooster(Booster booster) {
+        productos.remove(booster);
+    }
+
+    public void eliminarProductoSellado(ProductoSellado ps) {
+        productos.remove(ps);
+    }
+
+    public void eliminarAccesorio(Accesorio acc) {
+        productos.remove(acc);
+    }
+
+    public ArrayList<Producto> listarProductos() {
+        return productos;
+    }
+
+    public Producto buscarProducto(String id) {
+
+        for (Producto p : productos) {
+
+            if (p.id.equals(id)) {
                 return p;
             }
         }
+
         return null;
     }
 }

@@ -1,33 +1,47 @@
-import java.util.List;
+import java.util.ArrayList;
 
-public class Cliente extends Usuario{
-    public List<Compra> historialCompra;
-    public List<Booster> boosters;
-    public List<Carta> cartas;
-    public Cliente(String id, String nombre, String email, String password) {
+public class Cliente extends Usuario {
+
+    private ArrayList<Compra> historialCompras;
+    private ArrayList<Booster> boosters;
+    private ArrayList<Carta> cartas;
+
+    public Cliente(String id, String nombre,
+                   String email, String password) {
+
         super(id, nombre, email, password);
+
+        historialCompras = new ArrayList<>();
+        boosters = new ArrayList<>();
+        cartas = new ArrayList<>();
     }
-    public void realizarCompra(Producto producto){
-        Compra compra= new Compra("1",this,producto,10000);
-        historialCompra.add(compra);
+
+    public void realizarCompra(Producto producto) {
+
+        Compra compra =new Compra("1", this, producto, producto.getPrecio());
+        historialCompras.add(compra);
     }
-    public void inscribirseTorneo(Torneo torneo){
+
+    public boolean inscribirseEnTorneo(Torneo torneo) {
         torneo.inscribir(this);
-        System.out.println("Se inscribio el cliente");
-    }
-    public void abrirBooster(Booster booster){
-        booster.abrir();
+        return true;
+
     }
 
-    public List<Compra> getHistorialCompra() {
-        return historialCompra;
+    public void abrirBooster(Booster booster) {
+        ArrayList<Carta> nuevas = booster.abrir();
+        cartas.addAll(nuevas);
     }
 
-    public List<Booster> getBoosters() {
+    public ArrayList<Compra> getHistorialCompras() {
+        return historialCompras;
+    }
+
+    public ArrayList<Booster> getBoosters() {
         return boosters;
     }
 
-    public List<Carta> getCartas() {
+    public ArrayList<Carta> getCartas() {
         return cartas;
     }
 }

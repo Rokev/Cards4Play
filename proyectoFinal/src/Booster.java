@@ -1,20 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Booster {
-    public List<Carta> cartas;
+public class Booster extends Producto{
+    public ArrayList<Carta> cartas;
     public boolean abierto;
 
-    public Booster(){
-        cartas=new ArrayList<>();
-        abierto=false;
+    public Booster(String id, String nombre, double precio, double precioUSD) {
+        super(id, nombre, precio, precioUSD);
+        this.cartas = new ArrayList<>();
+        this.abierto = false;
     }
-    public void generarCartas(){
-        cartas.add(new Carta("Comum"));
-        cartas.add(new Carta("Rara"));
-        cartas.add(new Carta("Epica"));
+
+    public void generarCartas(InventarioManager inventario) {
+
+        for (Producto p : inventario.listarProductos()) {
+
+            if (p instanceof Carta) {
+
+                cartas.add((Carta) p);
+            }
+        }
     }
-    public List<Carta> abrir(){
+    public ArrayList<Carta> abrir(){
         abierto=true;
         return cartas;
     }

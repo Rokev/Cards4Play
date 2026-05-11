@@ -3,4 +3,5 @@ public class ProductoSellado extends Producto{
         super(id, nombre, precio, precioUSD);
     }
 
+
 }
