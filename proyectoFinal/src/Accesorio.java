@@ -7,4 +7,5 @@ public class Accesorio extends Producto{
     public String getTipo(){
         return tipo;
     }
+
 }

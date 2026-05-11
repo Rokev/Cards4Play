@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Torneo {
@@ -6,9 +7,9 @@ public class Torneo {
     public String nombre;
     public LocalDate fecha;
     public int maxParticipantes;
-    public List<Cliente> participantes;
+    public ArrayList<Cliente> participantes;
 
-    public Torneo(String id, String nombre, LocalDate fecha, int maxParticipantes, List<Cliente> participantes) {
+    public Torneo(String id, String nombre, LocalDate fecha, int maxParticipantes, ArrayList<Cliente> participantes) {
         this.id = id;
         this.nombre = nombre;
         this.fecha = fecha;

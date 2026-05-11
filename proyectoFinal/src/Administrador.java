@@ -1,16 +1,28 @@
-public class Administrador extends Usuario{
-    public Administrador(String id, String nombre, String email, String password) {
+import java.util.ArrayList;
+
+public class Administrador extends Usuario {
+
+    private InventarioManager inventario;
+    private ArrayList<Torneo> torneos;
+
+    public Administrador(String id, String nombre,
+                 String email, String password) {
+
         super(id, nombre, email, password);
-    }
-    public void gestionarInventario(){
-        System.out.println("Gestionando inventario...");
-    }
-    public void creandoTorneo(){
-        System.out.println("Creando torneo...");
+
+        inventario = new InventarioManager();
+        torneos = new ArrayList<>();
     }
 
-    public void registrarProductos(){
-        System.out.println("Registrando productos...");
+    public InventarioManager getInventarioManager() {
+        return inventario;
+    }
+
+    public ArrayList<Torneo> getTorneos() {
+        return torneos;
+    }
+
+    public void crearTorneo(Torneo torneo) {
+        torneos.add(torneo);
     }
 }
-
